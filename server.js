@@ -52,7 +52,8 @@ app.get("/metadata", async (req, res) => {
     const title = $("title").text();
     const favicon =
       $('link[rel="icon"]').attr("href") ||
-      $('link[rel="shortcut icon"]').attr("href");
+      $('link[rel="shortcut icon"]').attr("href") || 
+      $('img').first().attr('src');
 
     const modifiedURL =
       url[url.length - 1] === "/" ? url.substring(0, url.length - 1) : url;
@@ -60,7 +61,7 @@ app.get("/metadata", async (req, res) => {
     // Send JSON response with the desired format
     res.json({
       title,
-      image: `${modifiedURL}/${favicon.replace("/", "")}`,
+      image: `${modifiedURL}/${favicon?.replace("/", "")}`,
     });
   } catch (error) {
     console.error(error);
