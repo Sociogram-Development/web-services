@@ -3,7 +3,7 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 
 const app = express();
-const port = 3050;
+const port = 80;
 
 app.use(express.json());
 
